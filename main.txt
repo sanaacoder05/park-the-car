@@ -1,0 +1,103 @@
+var canvas = document.getElementById("mycanvas");
+ctx = canvas.getContext("2d");
+var car_width = 75;
+var car_height = 100;
+
+var background_image = "parkingLot.jpg";
+var greencar_image = "car2.png";
+
+var carx = 5;
+var cary = 255;
+
+
+function add() {
+
+
+	greencar_imageTag = new Image();
+	greencar_imageTag.onload = uploadgreencar();
+	greencar_imageTag.src = greencar_image;
+}
+
+
+
+function uploadgreencar()
+ {
+	ctx.drawImage(greencar_imageTag,carx,cary,car_width,car_height);	
+}
+//correct///
+window.addEventListener("keydown", my_keydown);
+
+function my_keydown(e)
+{
+	keyPressed = e.keyCode;
+	console.log(keyPressed);
+		if(keyPressed == '38')
+		{
+			up();
+			console.log("up");
+		}
+	
+		if(keyPressed == '40')
+		{
+			down();
+			console.log("down");
+		}
+		
+		if(keyPressed == '37')
+		{
+			left();
+			console.log("left");
+		}
+	
+		if(keyPressed == '39')
+		{
+			right();
+			console.log("right");
+		}
+		
+		
+}
+
+function up()
+{
+	if(cary >0) {
+		cary = cary - 10 ;
+		console.log("car x =   "  +  carx  + "car y =  "  + cary);
+		
+		uploadgreencar();
+	
+	} 
+}
+
+function down()
+{
+	if(cary < 500) {
+		cary = cary + 10 ;
+		console.log("car x =  "  +  carx  + "car y =  "  + cary);
+		
+		uploadgreencar();
+
+	}  
+  }
+
+function left()
+{
+	if(carx > 0) {
+		carx = carx - 10 ;
+		console.log("car x =  "  +  carx  + "car y =  "  + cary);
+		
+		uploadgreencar();
+		
+	} 
+}
+
+function right()
+{
+	if(carx < 850) {
+		carx = carx + 10 ;
+		console.log("car x =  "  +  carx  + "car y =  "  + cary);
+		
+		uploadgreencar();
+		
+	} 
+}
